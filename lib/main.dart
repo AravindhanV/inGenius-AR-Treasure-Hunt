@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/pages/login.dart';
 import 'package:treasurehuntapp/pages/splash.dart';
 
 void main() => runApp(HuntApp());
@@ -9,6 +10,9 @@ class HuntApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      routes: {
+        '/login': (context) => LoginPage(),
+      },
     );
   }
 }
