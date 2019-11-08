@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "100031338810",
-    "firebase_url": "https://kalpana2019app.firebaseio.com",
-    "project_id": "kalpana2019app",
-    "storage_bucket": "kalpana2019app.appspot.com"
+    "project_number": "1020101186370",
+    "firebase_url": "https://ingenius2k19-ff6bf.firebaseio.com",
+    "project_id": "ingenius2k19-ff6bf",
+    "storage_bucket": "ingenius2k19-ff6bf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:100031338810:android:85d110333a8d0c02e9d803",
+        "mobilesdk_app_id": "1:1020101186370:android:12e985c51ced63206daedb",
         "android_client_info": {
-          "package_name": "com.example.kalpana2019judgingapp"
+          "package_name": "com.example.treasurehuntapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "100031338810-ie2mlnielg6snunscujeibb12re9fjv1.apps.googleusercontent.com",
+          "client_id": "1020101186370-nd2usbi1ujoom3et3nocdrn2m7b9ijhu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMoHqN1ZYMhmhEfMoPQC_n8necvoqxHxU"
+          "current_key": "AIzaSyAodRaXFHBmG5pUODX4IlHFz9M2G6KiIN8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "100031338810-ie2mlnielg6snunscujeibb12re9fjv1.apps.googleusercontent.com",
+              "client_id": "1020101186370-nd2usbi1ujoom3et3nocdrn2m7b9ijhu.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
