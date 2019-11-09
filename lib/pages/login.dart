@@ -16,8 +16,15 @@ class _LoginPageState extends State<LoginPage> {
   final key = new GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: key,
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Padding(
@@ -86,13 +93,12 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onTap: () {
-                          print("%%%%%%%%%%%%%%%%%%##5Before");
+                          print("Text is ${_username.text}");
                           showDialog(
                             context: context,
                             barrierDismissible: true,
                             child: LoginDialog(),
                           );
-                          print("Tapped!");
                           validateData();
                         },
                       ),
@@ -108,10 +114,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void showError(String str) {
-    key.currentState.showSnackBar(new SnackBar(
-      duration: Duration(seconds: 1),
-      backgroundColor: Colors.yellow[300],
-      content: new Text(
+    key.currentState.showSnackBar(SnackBar(
+      duration: Duration(seconds: 2),
+      backgroundColor: Color(0xFF28A8E0),
+      content: Text(
         str,
         style: TextStyle(color: Colors.black),
       ),
@@ -122,11 +128,13 @@ class _LoginPageState extends State<LoginPage> {
     try {
       AuthResult result = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-              email: _username.text + "@kalpana.com", password: _password.text);
+              email: _username.text + "@ingenius.com",
+              password: _password.text);
       FirebaseUser user = result.user;
       Navigator.of(context).pop();
       Navigator.pushReplacementNamed(context, '/home');
     } on PlatformException catch (e) {
+      Navigator.of(context).pop();
       if (e.code == "ERROR_USER_NOT_FOUND") {
         showError("User Not Found");
       } else if (e.code == "ERROR_INVALID_EMAIL") {
