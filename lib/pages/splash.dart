@@ -30,8 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacementNamed(context, '/login');
             break;
           case AuthStatus.signedIn:
-          // TODO: Change back to /home
-            Navigator.pushReplacementNamed(context, '/login');
+            Navigator.pushReplacementNamed(context, '/home');
             break;
         }
       });
