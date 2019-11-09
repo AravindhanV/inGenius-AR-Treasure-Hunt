@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    FirebaseDatabase.instance.setPersistenceEnabled(true);
     userref = FirebaseDatabase.instance.reference().child('active');
   }
 
