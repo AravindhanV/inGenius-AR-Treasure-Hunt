@@ -47,7 +47,7 @@ class _LevelsState extends State<Levels> {
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 500),
-      curve: Curves.easeInOutExpo,
+      curve: Curves.easeInOutQuart,
       margin: EdgeInsets.only(top: all, bottom: all, right: allr, left: allr),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
