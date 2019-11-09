@@ -1,10 +1,39 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+enum AuthStatus {
+  notSignedIn,
+  signedIn,
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  AuthStatus authStatus = AuthStatus.notSignedIn;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 1), () {
-      Navigator.pushReplacementNamed(context, '/login');
+    Future.delayed(Duration(seconds: 2), () {
+      isLoggedIn().then((userId) {
+        authStatus =
+            userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+        switch (authStatus) {
+          case AuthStatus.notSignedIn:
+            Navigator.pushReplacementNamed(context, '/login');
+            break;
+          case AuthStatus.signedIn:
+            Navigator.pushReplacementNamed(context, '/home');
+            break;
+        }
+      });
     });
     return Scaffold(
       backgroundColor: Colors.black,
@@ -30,5 +59,10 @@ class SplashScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<String> isLoggedIn() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
   }
 }
