@@ -54,8 +54,6 @@ class _LevelsState extends State<Levels> {
     final double blur = active ? 30 : 0;
     final double offset = active ? 20 : 0;
     final double all = active ? 125 : 175;
-    final double ttextsize = active ? 45 : 33;
-    final double ctextsize = active ? 30 : 18;
     final double sides = active ? 10 : 30;
 
     final double opacityValue = active ? 1 : 0;

@@ -22,19 +22,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 1), () {
-      // isLoggedIn().then((userId) {
-      //   authStatus =
-      //       userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
-      //   switch (authStatus) {
-      //     case AuthStatus.notSignedIn:
-      //       Navigator.pushReplacementNamed(context, '/login');
-      //       break;
-      //     case AuthStatus.signedIn:
-      //       Navigator.pushReplacementNamed(context, '/home');
-      //       break;
-      //   }
-      Navigator.pushReplacementNamed(context, '/pages');
-      // });
+      isLoggedIn().then((userId) {
+        authStatus =
+            userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+        switch (authStatus) {
+          case AuthStatus.notSignedIn:
+            Navigator.pushReplacementNamed(context, '/login');
+            break;
+          case AuthStatus.signedIn:
+            Navigator.pushReplacementNamed(context, '/home');
+            break;
+        }
+        // Navigator.pushReplacementNasmed(context, '/qrcode');
+      });
     });
     return Scaffold(
       backgroundColor: Colors.black,
@@ -63,7 +63,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<String> isLoggedIn() async {
+    print(FirebaseAuth.instance);
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    print(FirebaseAuth.instance.currentUser());
     return user.uid;
   }
 }
