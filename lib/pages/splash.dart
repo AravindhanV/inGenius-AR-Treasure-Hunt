@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       isLoggedIn().then((userId) {
         authStatus =
             userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
@@ -30,7 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacementNamed(context, '/login');
             break;
           case AuthStatus.signedIn:
-            Navigator.pushReplacementNamed(context, '/home');
+          // TODO: Change back to /home
+            Navigator.pushReplacementNamed(context, '/login');
             break;
         }
       });

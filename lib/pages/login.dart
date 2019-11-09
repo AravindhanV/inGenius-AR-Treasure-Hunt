@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:treasurehuntapp/widgets/logindialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -14,11 +15,18 @@ class _LoginPageState extends State<LoginPage> {
   final _username = TextEditingController();
   final _password = TextEditingController();
   final key = new GlobalKey<ScaffoldState>();
+  DatabaseReference userref;
+
+  Future<String> isLoggedIn() async {
+    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    userref = FirebaseDatabase.instance.reference().child('active');
   }
 
   @override
@@ -93,7 +101,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onTap: () {
-                          print("Text is ${_username.text}");
                           showDialog(
                             context: context,
                             barrierDismissible: true,
@@ -130,9 +137,24 @@ class _LoginPageState extends State<LoginPage> {
           .signInWithEmailAndPassword(
               email: _username.text + "@ingenius.com",
               password: _password.text);
+      DataSnapshot snap;
       FirebaseUser user = result.user;
-      Navigator.of(context).pop();
+      userref = userref.child(user.uid);
+      await userref.once().then((snapshot){
+        snap = snapshot;
+        print("Inside");
+      });
+      print("After");
+      if(snap.value==null){
+        userref.set(1);
+        Navigator.of(context).pop();
       Navigator.pushReplacementNamed(context, '/home');
+      }
+      else {
+        Navigator.of(context).pop();
+        showError("Only 1 Active Session Allowed");
+        return;
+      }
     } on PlatformException catch (e) {
       Navigator.of(context).pop();
       if (e.code == "ERROR_USER_NOT_FOUND") {
