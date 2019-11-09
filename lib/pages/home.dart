@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:treasurehuntapp/pages/levels.dart';
+
+import '../constants.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,11 +12,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DatabaseReference levelref;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    levelref = FirebaseDatabase.instance.reference().child('teams');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          Container(
+      body: Container(
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -59,7 +72,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/levels');
+                levelref.child(Constants.uid).once().then((datasnapshot) {
+                  int n = datasnapshot.value;
+                  print("N is $n");
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Levels(n);
+                  }));
+                });
               },
             ),
             FlatButton(

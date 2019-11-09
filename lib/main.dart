@@ -15,7 +15,6 @@ class HuntApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
-        '/levels': (context) => Levels(),
       },
     );
   }
