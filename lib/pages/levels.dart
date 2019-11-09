@@ -42,16 +42,26 @@ class _LevelsState extends State<Levels> {
   _buildChapters(bool active) {
     final double blur = active ? 30 : 0;
     final double offset = active ? 20 : 0;
-    final double top = active ? 100 : 200;
+    final double all = active ? 100 : 150;
+    final double allr = active ? 20 : 30;
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 500),
-      curve: Curves.easeOutQuint,
-      margin: EdgeInsets.only(top: top, bottom: 50, right: 30),
+      curve: Curves.easeInOutExpo,
+      margin: EdgeInsets.only(top: all, bottom: all, right: allr, left: allr),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(60),
+          borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage("images/bg1.png"))),
+            fit: BoxFit.fill,
+            image: AssetImage("images/bg1.png"),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black87,
+              blurRadius: blur,
+              offset: Offset(offset, offset),
+            )
+          ]),
     );
   }
 }
