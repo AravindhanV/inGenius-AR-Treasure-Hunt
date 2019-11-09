@@ -67,7 +67,7 @@ class _LevelsState extends State<Levels> {
     final double opacityValue = active ? 1 : 0;
 
     return GestureDetector(
-      onTap: idx<widget.n ? nextPage : denyAccess,
+      onTap: idx < widget.n ? nextPage : denyAccess,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         curve: Curves.easeInOut,
@@ -142,17 +142,17 @@ class _LevelsState extends State<Levels> {
     );
   }
 
-  void nextPage(){
+  void nextPage() {
     print("Going to Next Page");
   }
 
-  void denyAccess(){
+  void denyAccess() {
     key.currentState.showSnackBar(SnackBar(
-      duration: Duration(seconds: 2),
-      backgroundColor: Color(0xFF28A8E0),
+      duration: Duration(seconds: 1),
+      backgroundColor: Colors.blueGrey[200],
       content: Text(
         "Chapter is Locked",
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
       ),
     ));
   }
