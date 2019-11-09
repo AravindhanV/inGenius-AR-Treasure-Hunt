@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
 
+import '../constants.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -140,6 +142,7 @@ class _LoginPageState extends State<LoginPage> {
               password: _password.text);
       DataSnapshot snap;
       FirebaseUser user = result.user;
+      Constants.uid = user.uid;
       userref = userref.child(user.uid);
       await userref.once().then((snapshot){
         snap = snapshot;

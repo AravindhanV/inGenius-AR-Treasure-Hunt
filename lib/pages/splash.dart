@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -30,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacementNamed(context, '/login');
             break;
           case AuthStatus.signedIn:
+            Constants.uid = userId;
             Navigator.pushReplacementNamed(context, '/home');
             break;
         }
@@ -65,7 +68,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<String> isLoggedIn() async {
     print(FirebaseAuth.instance);
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    print(FirebaseAuth.instance.currentUser());
-    return user.uid;
+    if (user != null) {
+      return user.uid;
+    }
+    return null;
   }
 }

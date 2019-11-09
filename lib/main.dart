@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehuntapp/pages/home.dart';
-import 'package:treasurehuntapp/pages/levels.dart';
 import 'package:treasurehuntapp/pages/login.dart';
 import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/pages/qrcode.dart';
@@ -17,7 +16,7 @@ class HuntApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
-        '/levels': (context) => Levels(),
+        // '/levels': (context) => Levels(),
         '/pages': (context) => Pages(),
         '/qrcode': (context) => Qrcode(),
       },
