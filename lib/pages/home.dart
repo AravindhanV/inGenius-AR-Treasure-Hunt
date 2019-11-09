@@ -59,7 +59,9 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 36,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/levels');
+              },
             ),
             FlatButton(
               child: Text(

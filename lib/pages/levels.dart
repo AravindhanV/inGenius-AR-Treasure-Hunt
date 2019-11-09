@@ -6,12 +6,13 @@ class Levels extends StatefulWidget {
 }
 
 class _LevelsState extends State<Levels> {
-  final PageController ctrl = PageController(viewportFraction: 0.8);
+  final PageController ctrl = PageController(viewportFraction: 0.7);
 
   int currentPage = 0;
 
   @override
   void initState() {
+    super.initState();
     ctrl.addListener(() {
       int next = ctrl.page.round();
       if (currentPage != next) {
@@ -24,31 +25,37 @@ class _LevelsState extends State<Levels> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.white,
-      child: PageView.builder(
-        controller: ctrl,
-        itemCount: 5,
-        itemBuilder: (context, int currentIdx) {
-          bool active = currentIdx == currentPage;
-          return _buildChapters(active);
-        },
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.white,
+        child: PageView.builder(
+          controller: ctrl,
+          itemCount: 5,
+          itemBuilder: (context, int currentIdx) {
+            bool active = currentIdx == currentPage;
+            return _buildChapters(active);
+          },
+        ),
       ),
     );
   }
 
-  _buildChapters(bool active) {
+  Widget _buildChapters(bool active) {
     final double blur = active ? 30 : 0;
     final double offset = active ? 20 : 0;
-    final double all = active ? 100 : 150;
-    final double allr = active ? 20 : 30;
+    final double all = active ? 125 : 175;
+    final double ttextsize = active ? 45 : 33;
+    final double ctextsize = active ? 30 : 18;
+    final double sides = active ? 10 : 30;
+
+    final double opacityValue = active ? 1 : 0;
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 500),
-      curve: Curves.easeInOutQuart,
-      margin: EdgeInsets.only(top: all, bottom: all, right: allr, left: allr),
+      curve: Curves.easeInOut,
+      margin: EdgeInsets.only(top: all, bottom: all, right: sides, left: sides),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
@@ -62,6 +69,58 @@ class _LevelsState extends State<Levels> {
               offset: Offset(offset, offset),
             )
           ]),
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: 40,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(40, 20, 20, 20),
+            child: Opacity(
+              opacity: active ? 1 : 0,
+              child: AnimatedDefaultTextStyle(
+                style: active
+                    ? TextStyle(
+                        fontFamily: 'Dancingscript',
+                        fontSize: 40,
+                        color: Colors.black,
+                      )
+                    : TextStyle(
+                        fontFamily: 'Dancingscript',
+                        fontSize: 23,
+                        color: Colors.black,
+                      ),
+                duration: const Duration(milliseconds: 500),
+                child: Text(
+                  'Chapter 1',
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            child: Opacity(
+              opacity: opacityValue,
+              child: AnimatedDefaultTextStyle(
+                style: active
+                    ? TextStyle(
+                        fontFamily: 'GreatVibes',
+                        fontSize: 30,
+                        color: Colors.black,
+                      )
+                    : TextStyle(
+                        fontFamily: 'GreatVibes',
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
+                duration: const Duration(milliseconds: 500),
+                child: Text(
+                    "  No misery \never so beautiful \nthan the one this \n  mind creates"),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

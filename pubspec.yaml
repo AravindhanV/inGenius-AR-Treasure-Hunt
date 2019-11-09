@@ -64,6 +64,9 @@ flutter:
     - family: Arizonia
       fonts:
         - asset: fonts/Arizonia-Regular.ttf
+    - family: Dancingscript
+      fonts:
+        - asset: fonts/DancingScript-Regular.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
