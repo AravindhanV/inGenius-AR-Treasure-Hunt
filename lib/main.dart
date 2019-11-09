@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:treasurehuntapp/pages/home.dart';
 import 'package:treasurehuntapp/pages/levels.dart';
 import 'package:treasurehuntapp/pages/login.dart';
+import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/pages/splash.dart';
 
 void main() => runApp(HuntApp());
@@ -16,6 +17,7 @@ class HuntApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/levels': (context) => Levels(),
+        '/pages': (context) => Pages(),
       },
     );
   }

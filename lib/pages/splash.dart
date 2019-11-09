@@ -22,18 +22,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 1), () {
-      isLoggedIn().then((userId) {
-        authStatus =
-            userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
-        switch (authStatus) {
-          case AuthStatus.notSignedIn:
-            Navigator.pushReplacementNamed(context, '/login');
-            break;
-          case AuthStatus.signedIn:
-            Navigator.pushReplacementNamed(context, '/home');
-            break;
-        }
-      });
+      // isLoggedIn().then((userId) {
+      //   authStatus =
+      //       userId == null ? AuthStatus.notSignedIn : AuthStatus.signedIn;
+      //   switch (authStatus) {
+      //     case AuthStatus.notSignedIn:
+      //       Navigator.pushReplacementNamed(context, '/login');
+      //       break;
+      //     case AuthStatus.signedIn:
+      //       Navigator.pushReplacementNamed(context, '/home');
+      //       break;
+      //   }
+      Navigator.pushReplacementNamed(context, '/pages');
+      // });
     });
     return Scaffold(
       backgroundColor: Colors.black,
