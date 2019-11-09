@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,8 +11,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:
-          // SafeArea(
-          // child:
           Container(
         height: double.infinity,
         width: double.infinity,
@@ -60,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/levels');
+                Navigator.pushNamed(context, '/levels');
               },
             ),
             FlatButton(
@@ -71,12 +70,13 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 36,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+              },
             )
           ],
         ),
       ),
-      // ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/types/chapter.dart';
 
 class Levels extends StatefulWidget {
   @override
@@ -7,6 +8,13 @@ class Levels extends StatefulWidget {
 
 class _LevelsState extends State<Levels> {
   final PageController ctrl = PageController(viewportFraction: 0.7);
+  List<Chapter> chapters = [
+    Chapter(1, "First Title"),
+    Chapter(2, "Second Title"),
+    Chapter(3, "dsfsa Title"),
+    Chapter(4, "dafss Title"),
+    Chapter(5, "afds Title"),
+  ];
 
   int currentPage = 0;
 
@@ -29,20 +37,20 @@ class _LevelsState extends State<Levels> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.white,
+        color: Colors.blueGrey[700],
         child: PageView.builder(
           controller: ctrl,
-          itemCount: 5,
+          itemCount: chapters.length,
           itemBuilder: (context, int currentIdx) {
             bool active = currentIdx == currentPage;
-            return _buildChapters(active);
+            return _buildChapters(active, currentIdx);
           },
         ),
       ),
     );
   }
 
-  Widget _buildChapters(bool active) {
+  Widget _buildChapters(bool active, int idx) {
     final double blur = active ? 30 : 0;
     final double offset = active ? 20 : 0;
     final double all = active ? 125 : 175;
@@ -92,7 +100,7 @@ class _LevelsState extends State<Levels> {
                       ),
                 duration: const Duration(milliseconds: 500),
                 child: Text(
-                  'Chapter 1',
+                  'Chapter ${chapters[idx].chno}',
                 ),
               ),
             ),
@@ -114,8 +122,8 @@ class _LevelsState extends State<Levels> {
                         color: Colors.black,
                       ),
                 duration: const Duration(milliseconds: 500),
-                child: Text(
-                    "  No misery \never so beautiful \nthan the one this \n  mind creates"),
+                child: Text(chapters[idx].title),
+                // "  No misery \never so beautiful \nthan the one this \n  mind creates"),
               ),
             ),
           ),
