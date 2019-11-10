@@ -2,6 +2,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
 
+import '../constants.dart';
+
 class Qrcode extends StatefulWidget {
   @override
   _QrcodeState createState() => _QrcodeState();
@@ -34,7 +36,12 @@ class _QrcodeState extends State<Qrcode> {
                   .setExecuteAfterPermissionGranted(true) // default true
                   .scan()
                   .then((String str) {
-                print("----------------------------------->$str");
+                    if(str == Constants.answers[Constants.n-1]){
+                      Constants.n++;
+                    }
+                    else{
+                      showDialog(context: context,builder: (context){});
+                    }
               });
             },
           ),
