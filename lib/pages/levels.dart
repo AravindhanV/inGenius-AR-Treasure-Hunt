@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/types/chapter.dart';
 
 class Levels extends StatefulWidget {
@@ -66,7 +67,11 @@ class _LevelsState extends State<Levels> {
     final double opacityValue = active ? 1 : 0;
 
     return GestureDetector(
-      onTap: idx < widget.n ? nextPage : denyAccess,
+      onTap: idx < widget.n
+          ? () {
+              nextPage(idx);
+            }
+          : denyAccess,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         curve: Curves.easeInOut,
@@ -141,8 +146,13 @@ class _LevelsState extends State<Levels> {
     );
   }
 
-  void nextPage() {
-    Navigator.pushNamed(context, '/pages');
+  void nextPage(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return Pages(index);
+      }),
+    );
   }
 
   void denyAccess() {

@@ -6,24 +6,34 @@ import 'package:treasurehuntapp/widgets/page4.dart';
 import 'package:treasurehuntapp/widgets/page5.dart';
 
 class Pages extends StatelessWidget {
+  int n;
+  Pages(this.n);
   final PageController ctrl = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: PageView(
+    return Scaffold(
+      body: PageView(
           // scrollDirection: Axis.vertical,
           controller: ctrl,
-          children: [
-            Page1(),
-            Page2(),
-            Page3(),
-            Page4(),
-            Page5(),
-          ],
-        ),
-      ),
+          children: getPage(n)),
     );
+  }
+
+  List<Widget> getPage(int c) {
+    List<Widget> page;
+    switch (c + 1) {
+      case 1:
+        page = Page1().getContainer();
+        break;
+      case 2:
+        page = Page2().getContainer();
+        break;
+      case 3:
+        break;
+      default:
+        print("Wrong page");
+    }
+    return page;
   }
 }

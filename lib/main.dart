@@ -18,7 +18,7 @@ class HuntApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         // '/levels': (context) => Levels(),
-        '/pages': (context) => Pages(),
+        //'/pages': (context) => Pages(),
         '/qrcode': (context) => Qrcode(),
       },
     );
