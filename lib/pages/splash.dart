@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             break;
           case AuthStatus.signedIn:
             Constants.uid = userId;
-            Navigator.pushReplacementNamed(context, '/qrcode');
+            Navigator.pushReplacementNamed(context, '/home');
             break;
         }
         // Navigator.pushReplacementNasmed(context, '/qrcode');

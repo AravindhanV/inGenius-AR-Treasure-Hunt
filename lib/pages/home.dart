@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 import 'package:treasurehuntapp/pages/levels.dart';
+import 'package:treasurehuntapp/widgets/homedialog.dart';
 
 import '../constants.dart';
 
@@ -72,9 +74,15 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  child: HomeDialog(),
+                );
                 levelref.child(Constants.uid).once().then((datasnapshot) {
                   int n = datasnapshot.value;
                   print("N is $n");
+                  prefix0.Navigator.pop(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return Levels(n);
                   }));

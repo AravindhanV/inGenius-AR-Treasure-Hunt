@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           showDialog(
                             context: context,
-                            barrierDismissible: true,
+                            barrierDismissible: false,
                             child: LoginDialog(),
                           );
                           validateData();
