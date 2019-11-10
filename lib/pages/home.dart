@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 import 'package:treasurehuntapp/pages/levels.dart';
 import 'package:treasurehuntapp/pages/qrcode.dart';
@@ -82,10 +81,9 @@ class _HomePageState extends State<HomePage> {
                 );
                 levelref.child(Constants.uid).once().then((datasnapshot) {
                   Constants.n = datasnapshot.value;
-                  prefix0.Navigator.pop(context);
+                  Navigator.pop(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    // return Levels(Constants.n);
-                    return Qrcode();
+                    return Levels(Constants.n);
                   }));
                 });
               },

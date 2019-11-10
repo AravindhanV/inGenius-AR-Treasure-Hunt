@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Page1 {
-  Page1();
+class Page3 {
+  Page3();
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',
     fontSize: 40,
@@ -29,7 +29,7 @@ class Page1 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 1",
+                "Page 3",
                 style: tile,
               ),
             ),
@@ -57,7 +57,7 @@ class Page1 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 1",
+                "Page 3",
                 style: tile,
               ),
             ),
@@ -85,7 +85,7 @@ class Page1 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 1",
+                "Page 3",
                 style: tile,
               ),
             ),

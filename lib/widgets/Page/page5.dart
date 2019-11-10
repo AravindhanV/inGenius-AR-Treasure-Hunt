@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Page3 extends StatelessWidget {
-  Page3();
+class Page5 extends StatelessWidget {
+  Page5();
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',
     fontSize: 40,
@@ -35,7 +35,7 @@ class Page3 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
             child: Text(
-              "             You need \nthousands of me to form an image.\n         Go to A not B ",
+              "You need thousands of me to form an image.Go to A not B ",
               style: content,
             ),
           )
