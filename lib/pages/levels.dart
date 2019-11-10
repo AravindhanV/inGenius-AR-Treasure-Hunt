@@ -13,7 +13,8 @@ class Levels extends StatefulWidget {
 class _LevelsState extends State<Levels> {
   final PageController ctrl = PageController(viewportFraction: 0.7);
   List<Chapter> chapters = [
-    Chapter(1, "First Title"),
+    Chapter(1,
+        "  No misery \never so beautiful \nthan the one this \n  mind creates"),
     Chapter(2, "Second Title"),
     Chapter(3, "dsfsa Title"),
     Chapter(4, "dafss Title"),
@@ -90,7 +91,7 @@ class _LevelsState extends State<Levels> {
               height: 40,
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 20, 20, 20),
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: Opacity(
                 opacity: active ? 1 : 0,
                 child: AnimatedDefaultTextStyle(
@@ -141,7 +142,7 @@ class _LevelsState extends State<Levels> {
   }
 
   void nextPage() {
-    print("Going to Next Page");
+    Navigator.pushNamed(context, '/pages');
   }
 
   void denyAccess() {

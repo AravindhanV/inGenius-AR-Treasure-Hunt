@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
 
