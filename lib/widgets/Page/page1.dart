@@ -105,7 +105,6 @@ class Page1 {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            fit: BoxFit.fill,
             image: AssetImage("images/bg1.png"),
           ),
         ),
@@ -142,7 +141,6 @@ class Page1 {
             ),
           ),
         ),
-      ),
       Container(
         width: double.infinity,
         height: double.infinity,
