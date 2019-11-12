@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Page1 {
-  Page1();
+class JPage1 {
   int clueidx = 0;
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',
@@ -24,14 +23,12 @@ class Page1 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-        child: Opacity(
-          opacity: clueidx >= 0 ? 1 : 0,
-          child: Column(
+        child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "Clue 1",
+                  "Journal 1 P1",
                   style: tile,
                 ),
               ),
@@ -44,7 +41,6 @@ class Page1 {
               )
             ],
           ),
-        ),
       ),
       Container(
         width: double.infinity,
@@ -55,14 +51,12 @@ class Page1 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-        child: Opacity(
-          opacity: clueidx >= 1 ? 1 : 0,
-          child: Column(
+        child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "Clue 2",
+                  "J1 Page 2",
                   style: tile,
                 ),
               ),
@@ -75,7 +69,6 @@ class Page1 {
               )
             ],
           ),
-        ),
       ),
       Container(
         width: double.infinity,
@@ -86,14 +79,12 @@ class Page1 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-        child: Opacity(
-          opacity: clueidx >= 2 ? 1 : 0,
-          child: Column(
+        child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "Clue 3",
+                  "J1 Page 3",
                   style: tile,
                 ),
               ),
@@ -106,7 +97,6 @@ class Page1 {
               )
             ],
           ),
-        ),
       ),
     ];
   }

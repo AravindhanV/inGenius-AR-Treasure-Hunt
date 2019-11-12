@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/constants.dart';
 import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/types/chapter.dart';
 
 class Levels extends StatefulWidget {
-  int n;
-
-  Levels(this.n);
 
   @override
   _LevelsState createState() => _LevelsState();
 }
 
 class _LevelsState extends State<Levels> {
-  final PageController ctrl = PageController(viewportFraction: 0.7);
+  final PageController ctrl = PageController(initialPage: Constants.n,viewportFraction: 0.7);
   List<Chapter> chapters = [
+    Chapter(0,"This is Intro"),
     Chapter(1,
         "  No misery \never so beautiful \nthan the one this \n  mind creates"),
     Chapter(2, "Second Title"),
@@ -22,7 +21,7 @@ class _LevelsState extends State<Levels> {
     Chapter(5, "afds Title"),
   ];
 
-  int currentPage = 0;
+  int currentPage = Constants.n;
   final key = new GlobalKey<ScaffoldState>();
 
   @override
@@ -67,7 +66,7 @@ class _LevelsState extends State<Levels> {
     final double opacityValue = active ? 1 : 0;
 
     return GestureDetector(
-      onTap: idx < widget.n
+      onTap: idx <= Constants.n
           ? () {
               nextPage(idx);
             }
@@ -156,6 +155,7 @@ class _LevelsState extends State<Levels> {
   }
 
   void denyAccess() {
+   print(key.currentState); 
     key.currentState.showSnackBar(SnackBar(
       duration: Duration(seconds: 1),
       backgroundColor: Colors.blueGrey[200],

@@ -36,10 +36,9 @@ class _QrcodeState extends State<Qrcode> {
                   .setExecuteAfterPermissionGranted(true) // default true
                   .scan()
                   .then((String str) {
-                if (str == Constants.answers[Constants.n - 1]) {
+                if (str == Constants.qrs[Constants.n - 1]) {
                   // Constants.n++;
                 } else {
-
                 }
               });
             },

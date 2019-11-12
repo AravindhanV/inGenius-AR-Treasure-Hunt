@@ -12,7 +12,7 @@ class HuntApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: Theme.of(context).copyWith(accentColor: Colors.blueGrey[200]),
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       routes: {
         '/login': (context) => LoginPage(),

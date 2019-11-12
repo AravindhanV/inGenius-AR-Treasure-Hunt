@@ -82,9 +82,10 @@ class _HomePageState extends State<HomePage> {
                 levelref.child(Constants.uid).once().then((datasnapshot) {
                   Constants.n = datasnapshot.value['chapter'];
                   Constants.clue = datasnapshot.value['clue'];
+                  print("Constants Clue = ${Constants.clue}");
                   Navigator.pop(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Levels(Constants.n);
+                    return Levels();
                   }));
                 });
               },

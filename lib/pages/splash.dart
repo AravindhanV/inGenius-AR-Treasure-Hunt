@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<String> isLoggedIn() async {
-    print(FirebaseAuth.instance);
+    // print(FirebaseAuth.instance);
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     if (user != null) {
       return user.uid;
