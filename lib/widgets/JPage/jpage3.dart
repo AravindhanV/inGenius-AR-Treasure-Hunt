@@ -28,7 +28,7 @@ class JPage3 {
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "Journal 3 P1",
+                  "Journal 1 P1",
                   style: tile,
                 ),
               ),
@@ -56,7 +56,7 @@ class JPage3 {
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "J3 Page 2",
+                  "J1 Page 2",
                   style: tile,
                 ),
               ),
@@ -84,7 +84,7 @@ class JPage3 {
               Padding(
                 padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                 child: Text(
-                  "J3 Page 3",
+                  "J1 Page 3",
                   style: tile,
                 ),
               ),

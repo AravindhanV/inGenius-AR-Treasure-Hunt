@@ -14,7 +14,7 @@ class Page3 {
     color: Colors.black,
   );
 
-  List<Widget> getContainer() {
+  List<Widget> getContainer(Function refresh,BuildContext cntxt) {
     List<Widget> containers = [
       Container(
         width: double.infinity,
