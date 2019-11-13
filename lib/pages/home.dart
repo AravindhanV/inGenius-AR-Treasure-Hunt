@@ -118,8 +118,9 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushReplacementNamed(context, '/login');
+                FirebaseAuth.instance.signOut().then((_){
+                  Navigator.pushReplacementNamed(context, '/login');
+                });
               },
             ),
             FlatButton(
