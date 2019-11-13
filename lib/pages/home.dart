@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -82,12 +84,42 @@ class _HomePageState extends State<HomePage> {
                 levelref.child(Constants.uid).once().then((datasnapshot) {
                   Constants.n = datasnapshot.value['chapter'];
                   Constants.clue = datasnapshot.value['clue'];
+                  // Constants.seed = datasnapshot.value['seed'];
+                  // if(Constants.n==0){
+                  // for(int i=0;i<5;i++){
+                  //   Random r = new Random(Constants.seed);
+                  //   int no = r.nextInt(5);
+                  //   if(!Constants.cluelist.contains(no)){
+                  //     Constants.cluelist.add(no);
+                  //   }
+                  // }
+                  // for(int i=0;i<5;i++){
+                  //   Random r = new Random(Constants.seed);
+                  //   int no = r.nextInt(5);
+                  //   if(!Constants.chapterlist.contains(no)){
+                  //     Constants.chapterlist.add(no);
+                  //   }
+                  // }
+                  // }
                   print("Constants Clue = ${Constants.clue}");
                   Navigator.pop(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return Levels();
                   }));
                 });
+              },
+            ),
+            FlatButton(
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                  fontFamily: 'Arizonia',
+                  fontSize: 36,
+                ),
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushReplacementNamed(context, '/login');
               },
             ),
             FlatButton(
@@ -101,7 +133,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop');
               },
-            )
+            ),
           ],
         ),
       ),

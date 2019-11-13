@@ -143,14 +143,15 @@ class _LoginPageState extends State<LoginPage> {
       DataSnapshot snap;
       FirebaseUser user = result.user;
       Constants.uid = user.uid;
-      userref = userref.child(user.uid);
-      await userref.once().then((snapshot){
+      print("User ID = "+user.uid);
+      DatabaseReference ref = userref.child(user.uid);
+      await ref.once().then((snapshot){
         snap = snapshot;
         print("Inside");
       });
       print("After");
       if(snap.value==null){
-        userref.set(1);
+        ref.set(1);
         Navigator.of(context).pop();
       Navigator.pushReplacementNamed(context, '/home');
       }

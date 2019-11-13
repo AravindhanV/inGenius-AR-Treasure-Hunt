@@ -27,16 +27,20 @@ class _PagesState extends State<Pages> {
     return Scaffold(
       key: key,
       body: PageView(
-          // scrollDirection: Axis.vertical,
-          controller: ctrl,
-          children: getPage(widget.n, context)),
+        // scrollDirection: Axis.vertical,
+        controller: ctrl,
+        children: getPage(widget.n, context),
+      ),
     );
   }
 
   void refreshPage() {
     setState(() {});
-    ctrl.animateToPage(Constants.clue,
-        curve: Curves.linear, duration: Duration(seconds: 1));
+    ctrl.animateToPage(
+      Constants.clue,
+      curve: Curves.linear,
+      duration: Duration(seconds: 1),
+    );
   }
 
   List<Widget> getPage(int c, BuildContext cntxt) {
