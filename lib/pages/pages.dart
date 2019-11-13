@@ -29,6 +29,7 @@ class _PagesState extends State<Pages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: key,
       body: PageView(
         // scrollDirection: Axis.vertical,

@@ -14,7 +14,7 @@ class Page3 {
     color: Colors.black,
   );
 
-  List<Widget> getContainer(Function refresh,BuildContext cntxt) {
+  List<Widget> getContainer(Function refresh, BuildContext cntxt) {
     List<Widget> containers = [
       Container(
         width: double.infinity,
@@ -40,7 +40,8 @@ class Page3 {
                 "             You need \nthousands of me to form an image.\n         Go to A not B ",
                 style: content,
               ),
-            )
+            ),
+            TextField(),
           ],
         ),
       ),
