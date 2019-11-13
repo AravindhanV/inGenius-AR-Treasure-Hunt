@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qrcode_reader/qrcode_reader.dart';
 import 'package:treasurehuntapp/constants.dart';
 
-class Page1 {
+class Page0 {
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',
     fontSize: 40,

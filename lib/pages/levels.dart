@@ -4,15 +4,15 @@ import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/types/chapter.dart';
 
 class Levels extends StatefulWidget {
-
   @override
   _LevelsState createState() => _LevelsState();
 }
 
 class _LevelsState extends State<Levels> {
-  final PageController ctrl = PageController(initialPage: Constants.n,viewportFraction: 0.7);
+  final PageController ctrl =
+      PageController(initialPage: Constants.level, viewportFraction: 0.7);
   List<Chapter> chapters = [
-    Chapter(0,"This is Intro"),
+    Chapter(0, "This is Intro"),
     Chapter(1,
         "  No misery \never so beautiful \nthan the one this \n  mind creates"),
     Chapter(2, "Second Title"),
@@ -21,7 +21,7 @@ class _LevelsState extends State<Levels> {
     Chapter(5, "afds Title"),
   ];
 
-  int currentPage = Constants.n;
+  int currentPage = Constants.level;
   final key = new GlobalKey<ScaffoldState>();
 
   @override
@@ -66,9 +66,9 @@ class _LevelsState extends State<Levels> {
     final double opacityValue = active ? 1 : 0;
 
     return GestureDetector(
-      onTap: idx <= Constants.n
+      onTap: idx <= Constants.level
           ? () {
-              nextPage(idx);
+              nextPage(Constants.chapterlist[idx]);
             }
           : denyAccess,
       child: AnimatedContainer(
@@ -112,7 +112,7 @@ class _LevelsState extends State<Levels> {
                         ),
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                    'Chapter ${chapters[idx].chno}',
+                    'Chapter ${chapters[Constants.chapterlist[idx]].chno}',
                   ),
                 ),
               ),
@@ -155,7 +155,7 @@ class _LevelsState extends State<Levels> {
   }
 
   void denyAccess() {
-   print(key.currentState); 
+    print(key.currentState);
     key.currentState.showSnackBar(SnackBar(
       duration: Duration(seconds: 1),
       backgroundColor: Colors.blueGrey[200],

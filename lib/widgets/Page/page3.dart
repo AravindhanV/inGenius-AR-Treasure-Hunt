@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/constants.dart';
 
 class Page3 {
   Page3();
@@ -14,7 +15,7 @@ class Page3 {
   );
 
   List<Widget> getContainer() {
-    return <Widget>[
+    List<Widget> containers = [
       Container(
         width: double.infinity,
         height: double.infinity,
@@ -29,7 +30,7 @@ class Page3 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 3",
+                "Page 3.0",
                 style: tile,
               ),
             ),
@@ -57,7 +58,7 @@ class Page3 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 3",
+                "Page 3.1",
                 style: tile,
               ),
             ),
@@ -85,7 +86,7 @@ class Page3 {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
               child: Text(
-                "Page 3",
+                "Page 3.2",
                 style: tile,
               ),
             ),
@@ -99,6 +100,12 @@ class Page3 {
           ],
         ),
       ),
+    ];
+
+    return [
+      containers[Constants.cluelist[3][0]],
+      containers[Constants.cluelist[3][1]],
+      containers[Constants.cluelist[3][2]]
     ];
   }
 }

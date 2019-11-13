@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:treasurehuntapp/widgets/JPage/jpage1.dart';
+import 'package:treasurehuntapp/widgets/JPage/jpage3.dart';
+import 'package:treasurehuntapp/widgets/Page/page0.dart';
 import 'package:treasurehuntapp/widgets/Page/page1.dart';
 import 'package:treasurehuntapp/widgets/Page/page2.dart';
 import 'package:treasurehuntapp/widgets/Page/page3.dart';
 import 'package:treasurehuntapp/widgets/Page/page4.dart';
-import 'package:treasurehuntapp/widgets/Page/page5.dart';
 
 import '../constants.dart';
 
@@ -43,13 +44,18 @@ class _PagesState extends State<Pages> {
     );
   }
 
-  List<Widget> getPage(int c, BuildContext cntxt) {
+  List<Widget> getPage(int currentChapter, BuildContext cntxt) {
     List<Widget> page;
-    switch (c) {
+    // switch (Constants.cluelist[Constants.chapterlist[c]][c]) {
+      print(currentChapter);
+      switch (currentChapter){
       case 0:
+        page = Constants.level > currentChapter
+            ? JPage1().getContainer()
+            : Page0().getContainer(this.refreshPage, cntxt);
         break;
       case 1:
-        page = Constants.n > c
+        page = Constants.level > currentChapter
             ? JPage1().getContainer()
             : Page1().getContainer(this.refreshPage, cntxt);
         break;
@@ -57,7 +63,7 @@ class _PagesState extends State<Pages> {
         page = Page2().getContainer();
         break;
       case 3:
-        page = Page3().getContainer();
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level ? JPage3().getContainer() : Page3().getContainer();
         break;
       case 4:
         page = Page2().getContainer();

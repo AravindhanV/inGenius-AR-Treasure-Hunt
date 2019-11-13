@@ -82,26 +82,19 @@ class _HomePageState extends State<HomePage> {
                   child: HomeDialog(),
                 );
                 levelref.child(Constants.uid).once().then((datasnapshot) {
-                  Constants.n = datasnapshot.value['chapter'];
+                  Constants.level = datasnapshot.value['chapter'];
                   Constants.clue = datasnapshot.value['clue'];
-                  // Constants.seed = datasnapshot.value['seed'];
-                  // if(Constants.n==0){
-                  // for(int i=0;i<5;i++){
-                  //   Random r = new Random(Constants.seed);
-                  //   int no = r.nextInt(5);
-                  //   if(!Constants.cluelist.contains(no)){
-                  //     Constants.cluelist.add(no);
-                  //   }
-                  // }
-                  // for(int i=0;i<5;i++){
-                  //   Random r = new Random(Constants.seed);
-                  //   int no = r.nextInt(5);
-                  //   if(!Constants.chapterlist.contains(no)){
-                  //     Constants.chapterlist.add(no);
-                  //   }
-                  // }
-                  // }
-                  print("Constants Clue = ${Constants.clue}");
+                  // print("Data: ${datasnapshot.value}");
+                  Constants.chapterlist =
+                      datasnapshot.value['chapterlist'].cast<int>().toList();
+                  Map<dynamic, dynamic> cl = datasnapshot.value['cluelist'];
+                  Constants.cluelist = [];
+                  cl.entries.forEach((f) {
+                    Constants.cluelist.add(f.value.cast<int>().toList());
+                  });
+                  print(Constants.level);
+                  print(Constants.chapterlist);
+                  print(Constants.cluelist);
                   Navigator.pop(context);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return Levels();
@@ -118,8 +111,16 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               onPressed: () {
-                FirebaseAuth.instance.signOut().then((_){
-                  Navigator.pushReplacementNamed(context, '/login');
+                FirebaseDatabase.instance
+                    .reference()
+                    .child('active/${Constants.uid}')
+                    .remove()
+                    .then((x) {
+                  FirebaseAuth.instance.signOut().then(
+                    (_) {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                  );
                 });
               },
             ),
