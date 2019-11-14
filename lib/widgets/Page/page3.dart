@@ -25,23 +25,25 @@ class Page3 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-              child: Text(
-                "Page 3.0",
-                style: tile,
+        child: Opacity(
+          opacity: Constants.cluelist[3].indexOf(Constants.clue) >+ Constants.clue ?9,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
+                child: Text(
+                  "Page 3.0",
+                  style: tile,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-              child: Text(
-                "             You need \nthousands of me to form an image.\n         Go to A not B ",
-                style: content,
-              ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
+                child: Text(
+                  "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                  style: content,
+                ),
+              )
+            ],
+          ),
         ),
       ),
       Container(
