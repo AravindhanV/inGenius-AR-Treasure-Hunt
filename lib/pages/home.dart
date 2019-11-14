@@ -36,105 +36,154 @@ class _HomePageState extends State<HomePage> {
           image: AssetImage("images/bg1.png"),
           fit: BoxFit.fill,
         )),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 120,
-            ),
-            Stack(
-              children: <Widget>[
-                Text(
-                  'Treasure Hunt',
-                  style: TextStyle(
-                    fontFamily: 'GreatVibes',
-                    fontSize: 52,
-                    color: Colors.black,
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 120,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(190, 56, 20, 0),
-                  child: Text(
-                    'Ingenius 2k19',
-                    style: TextStyle(
-                      fontFamily: 'GreatVibes',
-                      fontSize: 18,
-                      color: Colors.black,
+                  Stack(
+                    children: <Widget>[
+                      Text(
+                        'Treasure Hunt',
+                        style: TextStyle(
+                          fontFamily: 'GreatVibes',
+                          fontSize: 52,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(190, 66, 20, 0),
+                        child: Text(
+                          'Ingenius 2k19',
+                          style: TextStyle(
+                            fontFamily: 'GreatVibes',
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 90,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Play',
+                      style: TextStyle(
+                        fontFamily: 'panton',
+                        fontSize: 28,
+                      ),
                     ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 150,
-            ),
-            FlatButton(
-              child: Text(
-                'Play',
-                style: TextStyle(
-                  fontFamily: 'Arizonia',
-                  fontSize: 36,
-                ),
-              ),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  child: HomeDialog(),
-                );
-                levelref.child(Constants.uid).once().then((datasnapshot) {
-                  Constants.level = datasnapshot.value['chapter'];
-                  Constants.clue = datasnapshot.value['clue'];
-                  // print("Data: ${datasnapshot.value}");
-                  Constants.chapterlist =
-                      datasnapshot.value['chapterlist'].cast<int>().toList();
-                  Map<dynamic, dynamic> cl = datasnapshot.value['cluelist'];
-                  Constants.cluelist = [];
-                  cl.entries.forEach((f) {
-                    Constants.cluelist.add(f.value.cast<int>().toList());
-                  });
-                  print(Constants.level);
-                  print(Constants.chapterlist);
-                  print(Constants.cluelist);
-                  Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Levels();
-                  }));
-                });
-              },
-            ),
-            FlatButton(
-              child: Text(
-                'Logout',
-                style: TextStyle(
-                  fontFamily: 'Arizonia',
-                  fontSize: 36,
-                ),
-              ),
-              onPressed: () {
-                FirebaseDatabase.instance
-                    .reference()
-                    .child('active/${Constants.uid}')
-                    .remove()
-                    .then((x) {
-                  FirebaseAuth.instance.signOut().then(
-                    (_) {
-                      Navigator.pushReplacementNamed(context, '/login');
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        child: HomeDialog(),
+                      );
+                      levelref.child(Constants.uid).once().then((datasnapshot) {
+                        Constants.level = datasnapshot.value['chapter'];
+                        Constants.clue = datasnapshot.value['clue'];
+                        // print("Data: ${datasnapshot.value}");
+                        Constants.chapterlist = datasnapshot
+                            .value['chapterlist']
+                            .cast<int>()
+                            .toList();
+                        Map<dynamic, dynamic> cl =
+                            datasnapshot.value['cluelist'];
+                        Constants.cluelist = [];
+                        cl.entries.forEach((f) {
+                          Constants.cluelist.add(f.value.cast<int>().toList());
+                        });
+                        print(Constants.level);
+                        print(Constants.chapterlist);
+                        print(Constants.cluelist);
+                        Navigator.pop(context);
+                        if (Constants.level == -1) {
+                          Navigator.pushNamed(context, '/intro');
+                        } else {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Levels();
+                          }));
+                        }
+                      });
                     },
-                  );
-                });
-              },
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Story',
+                      style: TextStyle(
+                        fontFamily: 'Panton',
+                        fontSize: 28,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Sponsors',
+                      style: TextStyle(
+                        fontFamily: 'Panton',
+                        fontSize: 28,
+                      ),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Quit',
+                      style: TextStyle(
+                        fontFamily: 'Panton',
+                        fontSize: 28,
+                      ),
+                    ),
+                    onPressed: () {
+                      SystemChannels.platform
+                          .invokeMethod('SystemNavigator.pop');
+                    },
+                  ),
+                ],
+              ),
             ),
-            FlatButton(
-              child: Text(
-                'Quit',
-                style: TextStyle(
-                  fontFamily: 'Arizonia',
-                  fontSize: 36,
+            SafeArea(
+              child: Container(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  tooltip: "Logout",
+                  padding: EdgeInsets.only(right: 10, top: 15),
+                  icon: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.black,
+                    size: 35,
+                  ),
+                  onPressed: () {
+                    FirebaseDatabase.instance
+                        .reference()
+                        .child('active/${Constants.uid}')
+                        .remove()
+                        .then((x) {
+                      FirebaseAuth.instance.signOut().then(
+                        (_) {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        },
+                      );
+                    });
+                  },
                 ),
               ),
-              onPressed: () {
-                SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-              },
             ),
           ],
         ),

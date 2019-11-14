@@ -1,7 +1,10 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:qrcode_reader/qrcode_reader.dart';
 import 'package:treasurehuntapp/constants.dart';
 
 class Page2 {
+  Page2();
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',
     fontSize: 40,
@@ -12,8 +15,9 @@ class Page2 {
     fontSize: 30,
     color: Colors.black,
   );
-  List<Widget> getContainer() {
-    return <Widget>[
+
+  List<Widget> getContainer(Function refresh, BuildContext cntxt) {
+    List<Widget> containers = [
       Container(
         width: double.infinity,
         height: double.infinity,
@@ -23,90 +27,78 @@ class Page2 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-        child: Opacity(
-          opacity: Constants.clue >= 0 ? 1 : 0,
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "C2.1",
-                  style: tile,
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
+                  child: Text(
+                    "Page 3.0",
+                    style: tile,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
+                  child: Text(
+                    "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                    style: content,
+                  ),
+                ),
+              ],
+            ),
+            SafeArea(
+              child: Container(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                  padding: EdgeInsets.only(right: 10, top: 15),
+                  iconSize: 40,
+                  icon: Icon(
+                    Icons.photo_camera,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    QRCodeReader()
+                        .setAutoFocusIntervalInMs(200) // default 5000
+                        .setForceAutoFocus(true) // default false
+                        .setTorchEnabled(true) // default false
+                        .setHandlePermissions(true) // default true
+                        .setExecuteAfterPermissionGranted(true) // default true
+                        .scan()
+                        .then((String str) {
+                      if (str == "DS LAB") {
+                        showDialog(
+                            context: cntxt,
+                            builder: (content) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                content: Text("Validating QR Code..."),
+                              );
+                            });
+                        FirebaseDatabase.instance
+                            .reference()
+                            .child('teams/${Constants.uid}')
+                            .update({'chapter': Constants.level + 1}).then((_) {
+                              Navigator.pop(cntxt);
+                          Constants.level++;
+                          refresh();
+                          Constants.flag = 1;
+                        });
+                      }
+                    });
+                  },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "You need thousands of me to form an image. Go to A not B ",
-                  style: content,
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-      Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("images/bg1.png"),
-          ),
-        ),
-        child: Opacity(
-          opacity: Constants.clue >= 1 ? 1 : 0,
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "Clue 2.2",
-                  style: tile,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "             You need \nthousands of me to form an image.\n         Go to A not B ",
-                  style: content,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("images/bg1.png"),
-          ),
-        ),
-        child: Opacity(
-          opacity: Constants.clue >= 2 ? 1 : 0,
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "Clue 2.3",
-                  style: tile,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "             You need \nthousands of me to form an image.\n         Go to A not B ",
-                  style: content,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+    ];
+
+    return [
+      containers[Constants.cluelist[2][0]],
     ];
   }
 }

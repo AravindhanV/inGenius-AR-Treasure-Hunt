@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class JPage2 {
+class JPage0 {
   int clueidx = 0;
   TextStyle tile = TextStyle(
     fontFamily: 'Dancingscript',

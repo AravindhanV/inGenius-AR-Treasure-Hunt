@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:treasurehuntapp/widgets/JPage/jpage0.dart';
 import 'package:treasurehuntapp/widgets/JPage/jpage1.dart';
+import 'package:treasurehuntapp/widgets/JPage/jpage2.dart';
 import 'package:treasurehuntapp/widgets/JPage/jpage3.dart';
+import 'package:treasurehuntapp/widgets/JPage/jpage4.dart';
 import 'package:treasurehuntapp/widgets/Page/page0.dart';
 import 'package:treasurehuntapp/widgets/Page/page1.dart';
 import 'package:treasurehuntapp/widgets/Page/page2.dart';
@@ -11,8 +14,10 @@ import '../constants.dart';
 
 class Pages extends StatefulWidget {
   int n;
+  Function refreshLevel;
   Pages(
     this.n,
+    refreshLevel,
   );
 
   @override
@@ -26,6 +31,7 @@ class _PagesState extends State<Pages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: key,
       body: PageView(
         // scrollDirection: Axis.vertical,
@@ -46,30 +52,31 @@ class _PagesState extends State<Pages> {
 
   List<Widget> getPage(int currentChapter, BuildContext cntxt) {
     List<Widget> page;
-    // switch (Constants.cluelist[Constants.chapterlist[c]][c]) {
-      print(currentChapter);
-      switch (currentChapter){
+    switch (currentChapter) {
       case 0:
-        page = Constants.level > currentChapter
-            ? JPage1().getContainer()
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
+            ? JPage0().getContainer()
             : Page0().getContainer(this.refreshPage, cntxt);
         break;
       case 1:
-        page = Constants.level > currentChapter
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
             ? JPage1().getContainer()
             : Page1().getContainer(this.refreshPage, cntxt);
         break;
       case 2:
-        page = Page2().getContainer();
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
+            ? JPage2().getContainer()
+            : Page2().getContainer(this.refreshPage, cntxt);
         break;
       case 3:
-        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level ? JPage3().getContainer() : Page3().getContainer();
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
+            ? JPage3().getContainer()
+            : Page3().getContainer(this.refreshPage, cntxt);
         break;
       case 4:
-        page = Page2().getContainer();
-        break;
-      case 5:
-        page = Page2().getContainer();
+        page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
+            ? JPage4().getContainer()
+            : Page4().getContainer(this.refreshPage, cntxt);
         break;
       default:
         print("Wrong page");

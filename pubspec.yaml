@@ -70,6 +70,12 @@ flutter:
     - family: Dancingscript
       fonts:
         - asset: fonts/DancingScript-Regular.ttf
+    - family: Panton
+      fonts:
+        # - asset: fonts/panton.light-italic-caps.otf
+          # style: italic
+        - asset: fonts/Panton-LightCaps.otf
+        
   # fonts:
   #   - family: Schyler
   #     fonts:
