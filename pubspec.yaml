@@ -47,6 +47,13 @@ flutter:
   assets:
     - images/
     - images/bg1.png
+    - images/Logos/DataIken_Logo.png
+    - images/Logos/MSFT_Logo.png
+    - images/Logos/NTS_Logo.png
+    - images/Logos/Skillenza_Logo.png
+    - images/Logos/Zoom_Logo.png
+    - images/Logos/Sahaj_Software_Logo.png
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -73,9 +80,8 @@ flutter:
     - family: Panton
       fonts:
         # - asset: fonts/panton.light-italic-caps.otf
-          # style: italic
+        # style: italic
         - asset: fonts/Panton-LightCaps.otf
-        
   # fonts:
   #   - family: Schyler
   #     fonts:

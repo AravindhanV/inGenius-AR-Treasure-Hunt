@@ -137,7 +137,9 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 28,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sponsors');
+                    },
                   ),
                   SizedBox(
                     height: 7,

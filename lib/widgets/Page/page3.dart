@@ -27,46 +27,6 @@ class Page3 {
             image: AssetImage("images/bg1.png"),
           ),
         ),
-<<<<<<< HEAD
-        child: Opacity(
-          opacity: Constants.cluelist[3].indexOf(Constants.clue) >+ Constants.clue ?9,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "Page 3.0",
-                  style: tile,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-                child: Text(
-                  "             You need \nthousands of me to form an image.\n         Go to A not B ",
-                  style: content,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("images/bg1.png"),
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
-              child: Text(
-                "Page 3.1",
-                style: tile,
-              ),
-=======
         child: Stack(
           children: <Widget>[
             Column(
@@ -86,7 +46,6 @@ class Page3 {
                   ),
                 ),
               ],
->>>>>>> 1bb740c239e87a69e241964d90c593d2781a9814
             ),
             SafeArea(
               child: Container(
@@ -122,7 +81,7 @@ class Page3 {
                             .reference()
                             .child('teams/${Constants.uid}')
                             .update({'chapter': Constants.level + 1}).then((_) {
-                              Navigator.pop(cntxt);
+                          Navigator.pop(cntxt);
                           Constants.level++;
                           refresh();
                           Constants.flag = 1;

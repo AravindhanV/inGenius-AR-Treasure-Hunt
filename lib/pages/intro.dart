@@ -15,7 +15,6 @@ class _IntroPageState extends State<IntroPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pages = storyPages();
   }
@@ -47,6 +46,12 @@ class _IntroPageState extends State<IntroPage> {
           ),
           Positioned(
             child: RaisedButton(
+              disabledColor: Colors.transparent,
+              disabledTextColor: Colors.transparent,
+              textColor: Colors.white,
+              color: Color(0xFF1391ce),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
               elevation: 20,
               child: Text("Let's Go!"),
               onPressed: _currentPage == pages.length - 1
@@ -93,9 +98,15 @@ class _IntroPageState extends State<IntroPage> {
 
   List<Widget> storyPages() {
     return <Widget>[
-      Container(color: Colors.red,),
-      Container(color: Colors.amber,),
-      Container(color: Colors.green,),
+      Container(
+        color: Colors.red,
+      ),
+      Container(
+        color: Colors.amber,
+      ),
+      Container(
+        color: Colors.green,
+      ),
     ];
   }
 }
