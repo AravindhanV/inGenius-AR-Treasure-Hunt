@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(190, 56, 20, 0),
+                        padding: EdgeInsets.fromLTRB(190, 66, 20, 0),
                         child: Text(
                           'Ingenius 2k19',
                           style: TextStyle(
@@ -68,14 +68,14 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SizedBox(
-                    height: 150,
+                    height: 90,
                   ),
                   FlatButton(
                     child: Text(
                       'Play',
                       style: TextStyle(
-                        fontFamily: 'Arizonia',
-                        fontSize: 36,
+                        fontFamily: 'panton',
+                        fontSize: 28,
                       ),
                     ),
                     onPressed: () {
@@ -120,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Story',
                       style: TextStyle(
-                        fontFamily: 'Arizonia',
-                        fontSize: 36,
+                        fontFamily: 'Panton',
+                        fontSize: 28,
                       ),
                     ),
                     onPressed: () {},
@@ -133,8 +133,8 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Sponsors',
                       style: TextStyle(
-                        fontFamily: 'Arizonia',
-                        fontSize: 36,
+                        fontFamily: 'Panton',
+                        fontSize: 28,
                       ),
                     ),
                     onPressed: () {},
@@ -146,8 +146,8 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Quit',
                       style: TextStyle(
-                        fontFamily: 'Arizonia',
-                        fontSize: 36,
+                        fontFamily: 'Panton',
+                        fontSize: 28,
                       ),
                     ),
                     onPressed: () {
