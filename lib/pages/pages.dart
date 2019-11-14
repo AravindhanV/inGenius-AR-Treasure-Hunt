@@ -14,8 +14,10 @@ import '../constants.dart';
 
 class Pages extends StatefulWidget {
   int n;
+  Function refreshLevel;
   Pages(
     this.n,
+    refreshLevel,
   );
 
   @override

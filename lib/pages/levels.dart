@@ -18,7 +18,6 @@ class _LevelsState extends State<Levels> {
     Chapter(2, "Second Title"),
     Chapter(3, "dsfsa Title"),
     Chapter(4, "dafss Title"),
-    Chapter(5, "afds Title"),
   ];
 
   int currentPage = Constants.level;
@@ -112,7 +111,8 @@ class _LevelsState extends State<Levels> {
                         ),
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                    'Chapter ${chapters[Constants.chapterlist[idx]].chno}',
+                    // 'Chapter ${chapters[Constants.chapterlist[idx]].chno}',
+                    'Chapter ${idx + 1}',
                   ),
                 ),
               ),
@@ -135,7 +135,6 @@ class _LevelsState extends State<Levels> {
                         ),
                   duration: const Duration(milliseconds: 500),
                   child: Text(chapters[idx].title),
-                  // "  No misery \never so beautiful \nthan the one this \n  mind creates"),
                 ),
               ),
             ),
@@ -145,13 +144,34 @@ class _LevelsState extends State<Levels> {
     );
   }
 
+  void refreshLevels() {
+    setState(() {});
+    if (Constants.flag == 1) {
+      ctrl.animateToPage(
+        Constants.level,
+        duration: Duration(seconds: 1),
+        curve: Curves.linear,
+      );
+      Constants.flag = 0;
+    }
+  }
+
   void nextPage(int index) {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
-        return Pages(index);
+        return Pages(index, refreshLevels);
       }),
-    );
+    ).then((x) {
+      if (Constants.flag == 1) {
+        ctrl.animateToPage(
+          Constants.level,
+          duration: Duration(milliseconds: 600),
+          curve: Curves.linear,
+        );
+        Constants.flag = 0;
+      }
+    });
   }
 
   void denyAccess() {

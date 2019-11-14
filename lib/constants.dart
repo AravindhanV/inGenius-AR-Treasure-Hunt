@@ -5,11 +5,15 @@ class Constants {
   static int level;
   static int seed;
   static int clue;
-  static List<String> qrs = [
-    "First",
-    "This is the second answer",
+  static int flag;
+  static List<List<String>> qrs = [
+    [],
+    [],
+    [],
+    ["DS LAB"],
   ];
   static List<List<int>> cluelist = [];
   static List<int> chapterlist;
-  static DatabaseReference teamref = FirebaseDatabase.instance.reference().child('teams');
+  static DatabaseReference teamref =
+      FirebaseDatabase.instance.reference().child('teams');
 }
