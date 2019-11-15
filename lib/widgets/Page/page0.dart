@@ -34,15 +34,19 @@ class Page0 {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "Page 3.0",
+                    "Location Clue",
                     style: tile,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                    """I’m high , really high
+You will end with me
+If you count room 001,002,003
+""",
                     style: content,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],

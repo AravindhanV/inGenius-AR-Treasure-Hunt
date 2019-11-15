@@ -6,6 +6,7 @@ class Constants {
   static int seed;
   static int clue;
   static int flag;
+  static String ans;
   static List<List<String>> qrs = [
     [],
     [],

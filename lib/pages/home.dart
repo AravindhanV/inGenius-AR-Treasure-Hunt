@@ -104,6 +104,19 @@ class _HomePageState extends State<HomePage> {
                         Navigator.pop(context);
                         if (Constants.level == -1) {
                           Navigator.pushNamed(context, '/intro');
+                        } else if (Constants.level == 6) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (cntxt) {
+                                return Scaffold(
+                                  body: Center(
+                                    child: Text("You have finished the Hunt!"),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         } else {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -174,6 +187,7 @@ class _HomePageState extends State<HomePage> {
                     size: 35,
                   ),
                   onPressed: () {
+                    print("Clicied");
                     FirebaseDatabase.instance
                         .reference()
                         .child('active/${Constants.uid}')

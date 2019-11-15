@@ -38,7 +38,7 @@ class _IntroStoryPageState extends State<IntroStoryPage> {
             child: DotsIndicator(
               dotsCount: pages.length,
               position: _currentPage.toDouble(),
-              decorator: DotsDecorator(
+              decorator: DotsDecorator( 
                 color: Colors.black,
                 activeColor: Colors.red,
               ),

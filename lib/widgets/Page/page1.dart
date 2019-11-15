@@ -34,15 +34,20 @@ class Page1 {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "Page 3.0",
+                    "Location Clue",
                     style: tile,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                    """I’m neither in college
+Nor in the street
+Idli , chutney and bisibelebath
+Is what you seek
+""",
                     style: content,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -66,7 +71,7 @@ class Page1 {
                         .setExecuteAfterPermissionGranted(true) // default true
                         .scan()
                         .then((String str) {
-                      if (str == "DS LAB") {
+                      if (str == "ASHOKA CHAKRA") {
                         showDialog(
                             context: cntxt,
                             builder: (content) {

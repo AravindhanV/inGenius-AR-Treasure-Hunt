@@ -34,15 +34,16 @@ class Page3 {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "Page 3.0",
+                    "Location Clue",
                     style: tile,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                    """Give me a high five. It's high time you notice me.""",
                     style: content,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -66,7 +67,7 @@ class Page3 {
                         .setExecuteAfterPermissionGranted(true) // default true
                         .scan()
                         .then((String str) {
-                      if (str == "DS LAB") {
+                      if (str == "BOOK STORE") {
                         showDialog(
                             context: cntxt,
                             builder: (content) {

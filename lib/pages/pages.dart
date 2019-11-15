@@ -9,6 +9,7 @@ import 'package:treasurehuntapp/widgets/Page/page1.dart';
 import 'package:treasurehuntapp/widgets/Page/page2.dart';
 import 'package:treasurehuntapp/widgets/Page/page3.dart';
 import 'package:treasurehuntapp/widgets/Page/page4.dart';
+import 'package:treasurehuntapp/widgets/Page/page5.dart';
 
 import '../constants.dart';
 
@@ -77,6 +78,9 @@ class _PagesState extends State<Pages> {
         page = Constants.chapterlist.indexOf(currentChapter) < Constants.level
             ? JPage4().getContainer()
             : Page4().getContainer(this.refreshPage, cntxt);
+        break;
+        case 5:
+        page = Page5().getContainer(this.refreshPage, cntxt);
         break;
       default:
         print("Wrong page");

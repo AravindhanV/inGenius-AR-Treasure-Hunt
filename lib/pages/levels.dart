@@ -12,12 +12,12 @@ class _LevelsState extends State<Levels> {
   final PageController ctrl =
       PageController(initialPage: Constants.level, viewportFraction: 0.7);
   List<Chapter> chapters = [
-    Chapter(0, "This is Intro"),
-    Chapter(1,
-        "  No misery \never so beautiful \nthan the one this \n  mind creates"),
-    Chapter(2, "Second Title"),
-    Chapter(3, "dsfsa Title"),
-    Chapter(4, "dafss Title"),
+    Chapter(0, "It's not about the treasure. It's about the hunt"),
+    Chapter(1,"Work like a captain, play like a pirate"),
+    Chapter(2, "A smooth hunt never made a skilled pirate"),
+    Chapter(3, "Not all treasure is silver and gold"),
+    Chapter(4, "Random Quote to get you excited"),
+    Chapter(5, "There is more treasure in books than in all pirate's loot on the treasure island"),
   ];
 
   int currentPage = Constants.level;
@@ -134,7 +134,7 @@ class _LevelsState extends State<Levels> {
                           color: Colors.black,
                         ),
                   duration: const Duration(milliseconds: 500),
-                  child: Text(chapters[idx].title),
+                  child: Text(chapters[idx].title,textAlign: TextAlign.center,),
                 ),
               ),
             ),

@@ -34,15 +34,19 @@ class Page2 {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "Page 3.0",
+                    "Location Clue",
                     style: tile,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    "             You need \nthousands of me to form an image.\n         Go to A not B ",
+                    """Don’t pic on me or I will call bumblebee
+Or the spark can cause me to fuse out,
+What am I ?
+""",
                     style: content,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
@@ -66,7 +70,7 @@ class Page2 {
                         .setExecuteAfterPermissionGranted(true) // default true
                         .scan()
                         .then((String str) {
-                      if (str == "DS LAB") {
+                      if (str == "PIXEL BOOK") {
                         showDialog(
                             context: cntxt,
                             builder: (content) {
