@@ -124,7 +124,9 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 28,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/introstory');
+                    },
                   ),
                   SizedBox(
                     height: 7,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:treasurehuntapp/pages/home.dart';
 import 'package:treasurehuntapp/pages/intro.dart';
+import 'package:treasurehuntapp/pages/introstory.dart';
 import 'package:treasurehuntapp/pages/login.dart';
 import 'package:treasurehuntapp/pages/pages.dart';
 import 'package:treasurehuntapp/pages/qrcode.dart';
@@ -25,6 +26,7 @@ class HuntApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/home': (context) => HomePage(),
         '/intro': (context) => IntroPage(),
+        '/introstory': (context) => IntroStoryPage(),
         // '/levels': (context) => Levels(),
         //'/pages': (context) => Pages(),
         '/qrcode': (context) => Qrcode(),
