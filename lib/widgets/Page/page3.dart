@@ -41,7 +41,7 @@ class Page3 {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 90, 50, 0),
                   child: Text(
-                    """Give me a high five. It's high time you notice me.""",
+                    """I have so many hands but all I can do is show them to you. Tik tok tik tok. Come on give me a high five. That's your next clue""",
                     style: content,
                     textAlign: TextAlign.center,
                   ),

@@ -43,7 +43,7 @@ class Page0 {
                   child: Text(
                     """I’m high , really high
 You will end with me
-If you count room 001,002,003
+If you count room 001,002,003,...
 """,
                     style: content,
                     textAlign: TextAlign.center,
@@ -85,7 +85,7 @@ If you count room 001,002,003
                             .reference()
                             .child('teams/${Constants.uid}')
                             .update({'chapter': Constants.level + 1}).then((_) {
-                              Navigator.pop(cntxt);
+                          Navigator.pop(cntxt);
                           Constants.level++;
                           refresh();
                           Constants.flag = 1;
