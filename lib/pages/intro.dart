@@ -40,7 +40,7 @@ class _IntroPageState extends State<IntroPage> {
               position: _currentPage.toDouble(),
               decorator: DotsDecorator(
                 color: Colors.black,
-                activeColor: Colors.red,
+                activeColor: Colors.blue,
               ),
             ),
           ),
@@ -99,13 +99,24 @@ class _IntroPageState extends State<IntroPage> {
   List<Widget> storyPages() {
     return <Widget>[
       Container(
-        color: Colors.red,
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('images/s1.png'),
+          ),
+        ),
       ),
       Container(
-        color: Colors.amber,
-      ),
-      Container(
-        color: Colors.green,
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage('images/s2.png'),
+          ),
+        ),
       ),
     ];
   }

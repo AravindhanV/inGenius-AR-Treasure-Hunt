@@ -98,13 +98,73 @@ class Page5 {
                           .child('teams/${Constants.uid}')
                           .update({'chapter': 6}).then((_) {
                         Navigator.pop(cntxt);
+                        Navigator.pop(cntxt);
                         Navigator.pushReplacement(
                           cntxt,
                           MaterialPageRoute(
                             builder: (cntxt) {
                               return Scaffold(
+                                backgroundColor: Colors.black,
                                 body: Center(
-                                  child: Text("You have finished the Hunt!"),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 40,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Image.asset(
+                                          'images/ingeniuslogo.png',
+                                        ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Image.asset(
+                                          'images/ggh.png',
+                                          height: 100,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              "girl",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Text(
+                                              "Geeks",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Color(0xFFE9C650),
+                                              ),
+                                            ),
+                                            Text(
+                                              "Hack",
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 50,
+                                        ),
+                                        Text(
+                                          "Thank You for playing the\n inGenius AR Treasure Hunt",
+                                          style: TextStyle(
+                                            fontSize: 23,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               );
                             },
